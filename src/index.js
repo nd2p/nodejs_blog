@@ -5,6 +5,7 @@ const morgan = require('morgan')
 const handlebars = require('express-handlebars');
 const path = require('path')
 
+app.use(express.static(path.join(__dirname, '/public')))
 
 //http logger
 app.use(morgan('combined'))
