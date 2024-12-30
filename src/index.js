@@ -11,9 +11,15 @@ app.use(express.static(path.join(__dirname, '/public')))
 app.use(morgan('combined'))
 
 //template engine
-app.engine('handlebars', handlebars.engine({extname: '.hbs'}));
-app.set('view engine','handlebars')
+app.engine('handlebars', handlebars.engine({
+    extname: '.hbs',
+    defaultLayout: 'main',
+    layoutDir: __dirname + 'resources/views/layouts',
+    partialsDir: path.join(__dirname, 'resources/views/partials'),
+}));
+app.set('view engine', 'handlebars')
 app.set('views', path.join(__dirname, 'resources/views'));
+
 
 app.get('/', (req, res) => {
     res.render('home')
